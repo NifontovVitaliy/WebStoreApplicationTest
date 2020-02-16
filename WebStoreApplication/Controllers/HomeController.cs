@@ -5,25 +5,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebStoreApplication.Data.Repository;
 using WebStoreApplication.Models;
+using WebStoreApplication.ViewModels;
 
 namespace WebStoreApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IPhoneRepository _phoneRepository;
+        private readonly ICompanyRepository _companyRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPhoneRepository phoneRepository, ICompanyRepository companyRepository)
         {
-            _logger = logger;
+            _phoneRepository = phoneRepository;
+            _companyRepository = companyRepository;
+        }
+
+        public IActionResult ShowPhones()
+        {
+            var phoneViewModel = new PhoneViewModel()
+            {
+                Phones = _phoneRepository.Phones.ToList()
+            };
+
+
+            return View(phoneViewModel);
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
