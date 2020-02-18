@@ -1,24 +1,20 @@
-﻿@Model = PhoneViewModel
+﻿@model PhoneViewModel
 
-<h1>ShowPhones</h1>
-<div class="img-thumbnail">
-    <table>
-        <tr>
+    <div>
+        <table>
             @foreach (Phone phone in Model.Phones)
             {
-        <tr>
-            <td>
-                @phone.Name
-            </td>
-            <td>
-                <img src="@phone.ImageUrl" alt="" />
-            </td>
-            <td>
-                @phone.Price
-            </td>
-        </tr>
-           
-        }
-            </tr>
+                <tr>
+                    <td>
+                        @phone.Name
+                    </td>
+                    <td>
+                        <img src="@phone.ImageUrl" alt="" width="100" height="100" />
+                    </td>
+                    <td>
+                        @phone.Price.ToString("c")
+                    </td>
+                </tr>
+            }
         </table>
-</div>
+    </div>

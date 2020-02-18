@@ -8,7 +8,7 @@ namespace WebStoreApplication.Models
         public int CompanyId { get; set; }
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+        public string CompanyName { get; set; }
         [Required]
         [StringLength(100)]
         public string Country { get; set; }
