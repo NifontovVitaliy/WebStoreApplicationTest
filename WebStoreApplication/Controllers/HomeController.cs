@@ -14,28 +14,20 @@ namespace WebStoreApplication.Controllers
     public class HomeController : Controller
     {
         private readonly IPhoneRepository _phoneRepository;
-        private readonly ICompanyRepository _companyRepository;
 
-        public HomeController(IPhoneRepository phoneRepository, ICompanyRepository companyRepository)
+        public HomeController(IPhoneRepository phoneRepository)
         {
             _phoneRepository = phoneRepository;
-            _companyRepository = companyRepository;
         }
-
-        public IActionResult ShowPhones()
-        {
-            var phoneViewModel = new PhoneViewModel()
-            {
-                Phones = _phoneRepository.Phones.ToList()
-            };
-
-
-            return View(phoneViewModel);
-        }
-
+        
         public IActionResult Index()
         {
-            return View();
+            var phones = _phoneRepository.Phones.Where(p => p.IsTopBuying == true).OrderBy(p => p.CompanyId);
+            var phoneViewModel = new PhoneViewModel
+            {
+                Phones = phones
+            };
+            return View(phoneViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

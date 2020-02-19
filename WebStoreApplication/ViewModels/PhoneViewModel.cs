@@ -6,6 +6,6 @@ namespace WebStoreApplication.ViewModels
     public class PhoneViewModel
     {
         public IEnumerable<Phone> Phones { get; set; }
-        public string CurrentCategory { get; set; }
+        public string CurrentCompany { get; set; }
     }
 }
