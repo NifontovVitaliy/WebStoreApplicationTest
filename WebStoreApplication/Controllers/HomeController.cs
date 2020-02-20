@@ -22,7 +22,7 @@ namespace WebStoreApplication.Controllers
         
         public IActionResult Index()
         {
-            var phones = _phoneRepository.Phones.Where(p => p.IsTopBuying == true).OrderBy(p => p.CompanyId);
+            var phones = _phoneRepository.TopBuyingPhone;
             var phoneViewModel = new PhoneViewModel
             {
                 Phones = phones

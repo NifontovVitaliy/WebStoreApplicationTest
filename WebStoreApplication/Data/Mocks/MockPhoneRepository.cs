@@ -70,7 +70,7 @@ namespace WebStoreApplication.Data.Mocks
             }
         }
 
-        public IEnumerable<Phone> TopBuyingPhone { get; }
+        public IEnumerable<Phone> TopBuyingPhone => Phones.Where(p => p.IsTopBuying == true);
 
         public Phone GetPhoneById(int phoneId) => Phones.Where(p => p.PhoneId == phoneId).FirstOrDefault();
     }

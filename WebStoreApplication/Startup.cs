@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStoreApplication.Data.Mocks;
 using WebStoreApplication.Data.Repository;
+using WebStoreApplication.Models;
 
 namespace WebStoreApplication
 {
@@ -19,7 +20,6 @@ namespace WebStoreApplication
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
@@ -44,6 +44,8 @@ namespace WebStoreApplication
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //DbInitializer.Seed(app);
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,24 +1,10 @@
-﻿@model PhoneViewModel
-
-<div>
+﻿<div>
     <h2>@Model.CurrentCompany</h2>
 </div>
 
 <div>
-    <table>
-        @foreach (Phone phone in Model.Phones)
-        {
-            <tr>
-                <td>
-                    <p>@phone.Name</p>
-                </td>
-                <td>
-                    <p><img src="@phone.ImageUrl" alt="" width="100" height="100" /></p>
-                </td>
-                <td>
-                    <p>@phone.Price.ToString("c")</p>
-                </td>
-            </tr>
-        }
-    </table>
+    @foreach (Phone phone in Model.Phones)
+    {
+        @await Html.PartialAsync("PhoneSummary", phone)
+    }
 </div>
